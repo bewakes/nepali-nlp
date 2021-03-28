@@ -1,0 +1,38 @@
+remove मा
+split सम्म
+remove को
+remove का
+split सँग
+split देखि
+split निर
+split पट्टि
+split माथि
+remove हरु
+remove का
+remove की
+remove ले
+split लाई
+split भित्र
+split पछि
+split विरुद्ध
+split समक्ष
+split बाट
+split तिर
+split पछि
+remove मै
+replace सम्मै  सम्म
+remove कै 
+replace सँगै सँग
+replace निरै निर
+replace भित्रै भित्र
+replace विरुद्धै विरुद्ध
+replace समक्षै समक्ष
+replace तिरै तिर
+replace बाटै बाट 
+exception अर्को
+exception आमा
+exception तामा
+exception मामा
+exception धर्को
+exception सलाई
+exception झर्को
