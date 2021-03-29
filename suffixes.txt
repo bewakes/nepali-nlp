@@ -1,16 +1,19 @@
 remove मा
-split सम्म
 remove को
 remove का
-split सँग
-split देखि
-split निर
-split पट्टि
-split माथि
 remove हरु
 remove का
 remove की
 remove ले
+remove मै
+remove कै
+remove हरू
+split सँग
+split निर
+split पट्टि
+split माथि
+split सम्म
+split देखि
 split लाई
 split भित्र
 split पछि
@@ -19,16 +22,49 @@ split समक्ष
 split बाट
 split तिर
 split पछि
-remove मै
+split द्वारा
+split मार्फत
+split मुक्त
+split मध्ये
+split समेत
+split बाहेक
+split जस्तै
+split लगायत
+split पूर्व
+split तर्फ
+split भन्दा
+split स्थित
+split सामु
+split लगत्तै
+split अनुसार
+split बीच
+split सहित
+split भर
+split बारे
+split अघि
+split बाहिर
+split अन्तर्गत
+split प्रति
+split कहाँ
+split मात्र
+replace वीच बीच
+replace बिच बीच
+replace मात्रै मात्र
+replace मार्फत् मार्फत
+replace बाहिरै बाहिर
+replace देखी  देखि
+replace बिरुद्ध विरुद्ध
+replace तीर तिर
 replace सम्मै  सम्म
-remove कै 
 replace सँगै सँग
+replace संगै सँग
+replace संग सँग
 replace निरै निर
 replace भित्रै भित्र
 replace विरुद्धै विरुद्ध
 replace समक्षै समक्ष
 replace तिरै तिर
-replace बाटै बाट 
+replace बाटै बाट
 exception अर्को
 exception आमा
 exception तामा
@@ -36,3 +72,6 @@ exception मामा
 exception धर्को
 exception सलाई
 exception झर्को
+exception नगरपालिका
+exception ढोका
+excpetion गाउँपालिका

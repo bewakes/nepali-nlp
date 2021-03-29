@@ -5,7 +5,7 @@ from typing_extensions import TypedDict
 
 
 SUFFIXES_FILE = 'suffixes.txt'
-PUNCTUATIONS = ''.join([x for x in string.punctuation if x != '?']) + '‘’'
+PUNCTUATIONS = ''.join([x for x in string.punctuation if x != '?']) + '‘’“…' + string.ascii_letters + string.digits
 
 
 class SuffixesMap(TypedDict):
@@ -89,12 +89,24 @@ def process_word_suffix(suffixes: SuffixesMap, word: str) -> List[str]:
                 #   dal-haru-bata in which case we split bata, but need to process dal-haru
                 #   to remove haru
                 return [*process_word_suffix(suffixes, subject), suff]
-    return [word]
+    return [word] if word else []  # Just in case word is empty string
+
+
+def clean_word(word: str) -> str:
+    """
+    for example aakar + ekar and okar look the same but are no the same
+    Also replace devnagari numerals by N
+    """
+    word = word.replace('ाे', 'ो')
+    word = word.replace('ाै', 'ाै')
+    word = re.sub(r'[१२३४५६७८९०]+', 'N', word)
+    return word
 
 
 def process_suffixes(suffixes: SuffixesMap, words: List[str]) -> List[str]:
     processed = []
     for word in words:
+        word = clean_word(word)
         processed.extend(process_word_suffix(suffixes, word))
     return processed
 
@@ -103,8 +115,8 @@ if __name__ == '__main__':
     string1 = ' नेपाली कांग्रेसका दिवगंत नेता नवीन्द्रराज जोशीलाई शीर्ष नेताहरुले श्रद्धाञ्जली दिएका छन् । '
     string2 = 'प्रतिनिधिसभा विघटनलाई असंवैधानिक भनेर सडकमा गएका दलहरुबाटै हतारमा समर्थन फिर्ता नलिन आफूमाथि जबर्जस्त दबाब रहेको उनले बताए'
     string3 = 'डिजाइन अर्कोतिर गयो । सर्वोच्च अदालतको संवैधानिक इजलासले यो सरकारलाई धारा ७६ (१) भनेको छ । त्यही सर्वोच्चको दुईजना न्यायाधीशको बेञ्चले ७६(२) को भन्यो ।’'
-    strs = [string1, string2, string3]
+    string4 = 'संविधान दिवस-२०७६ मा घोषित मानपदवी २७ चैतमा प्रदान गरिने'
+    strs = [string1, string2, string3, string4]
     suffixes = get_suffixes()
     for s in strs:
         print(process_suffixes(suffixes, s.split()))
-    print(split_sentences(string2))
