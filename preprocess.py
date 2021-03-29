@@ -1,9 +1,11 @@
 import re
-from typing import Dict, Set, List, NewType, Tuple
+import string
+from typing import Set, List, Tuple
 from typing_extensions import TypedDict
 
 
 SUFFIXES_FILE = 'suffixes.txt'
+PUNCTUATIONS = ''.join([x for x in string.punctuation if x != '?']) + '‘’'
 
 
 class SuffixesMap(TypedDict):
@@ -11,6 +13,15 @@ class SuffixesMap(TypedDict):
     split: Set[str]
     exception: Set[str]
     replace: Set[Tuple[str, str]]
+
+
+def remove_punctuation(text: str) -> str:
+    transtable = str.maketrans('?', '।', PUNCTUATIONS)
+    return text.translate(transtable)
+
+
+def split_sentences(text: str) -> List[str]:
+    return re.split('[।?]', text)
 
 
 def get_suffixes() -> SuffixesMap:
@@ -46,8 +57,11 @@ def get_suffixes() -> SuffixesMap:
 
 
 def process_word_suffix(suffixes: SuffixesMap, word: str) -> List[str]:
-    if word in suffixes['exception']:
-        return [word]
+    """
+    Processeses the suffixes like haru, lai, harulai, dekhi, ko, ka, ki, etc.
+    Returns a list of words. Because, suffixes like lai, dekhi, etc are splitted
+    from the original word
+    """
     for src, tgt in suffixes['replace']:
         if word.endswith(src):
             word = re.sub(rf'{src}', tgt, word)
@@ -57,10 +71,14 @@ def process_word_suffix(suffixes: SuffixesMap, word: str) -> List[str]:
     while changes:
         # Loop until no changes are done
         changes = False
+
+        if word in suffixes['exception']:
+            continue
+
         for suff in suffixes['remove']:
             if word.endswith(suff):
                 changes = True
-                word = word.rstrip(suff)
+                word = re.sub(rf'{suff}$', '', word)
                 break
 
         for suff in suffixes['split']:
@@ -89,3 +107,4 @@ if __name__ == '__main__':
     suffixes = get_suffixes()
     for s in strs:
         print(process_suffixes(suffixes, s.split()))
+    print(split_sentences(string2))
