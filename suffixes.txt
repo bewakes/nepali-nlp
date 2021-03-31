@@ -93,3 +93,4 @@ exception मुक्का
 exception टुक्का
 exception रन्को
 exception फन्को
+exception उपत्यका
