@@ -94,3 +94,10 @@ exception टुक्का
 exception रन्को
 exception फन्को
 exception उपत्यका
+exception बाँकी
+exception महानगरपालिका
+exception पहिले
+exception नाका
+exception ठेक्का
+exception तरिका
+exception अमेरिका

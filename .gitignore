@@ -1,4 +1,11 @@
 corpus/
+corpus_old/
 *.pyc
 .mypy_cache/
 .ipynb_checkpoints/
+*.pkl
+*.json
+*.npy
+*.png
+gensim_keys.txt
+*.bin
